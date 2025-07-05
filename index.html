@@ -3,109 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="طراحی دکمه‌ها و منوهای حرفه‌ای و مدرن با رعایت اصول سئو و رابط کاربری">
+    <meta name="description" content="طراحی حرفه‌ای دکمه‌ها و منوهای ریسپانسیو با منوی همبرگری">
     <meta name="keywords" content="HTML, CSS, طراحی وب, دکمه, منو, رابط کاربری, سئو">
     <meta name="author" content="شیرازی">
     <title>طراحی دکمه‌ها و منوهای حرفه‌ای | شیرازی</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Vazirmatn', sans-serif;
         }
         
         :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4895ef;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4cc9f0;
-            --warning: #f72585;
-            --gray: #6c757d;
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --gray: #7f8c8d;
             --transition: all 0.3s ease;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --radius: 10px;
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50);
             color: var(--light);
-            line-height: 1.6;
-            padding: 20px;
+            line-height: 1.7;
             min-height: 100vh;
+            padding: 0;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
         
+        /* نوار ناوبری همبرگری */
+        .navbar {
+            background: rgba(26, 37, 47, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 8px 15px;
+            border-radius: var(--radius);
+        }
+        
+        .nav-links a:hover {
+            background: rgba(52, 152, 219, 0.2);
+        }
+        
+        .nav-links a.active {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--light);
+        }
+        
+        /* بخش هدر */
         header {
             text-align: center;
-            padding: 20px 0;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 1s ease;
+            padding: 60px 0 40px;
+            background: rgba(26, 37, 47, 0.6);
+            border-radius: 0 0 var(--radius) var(--radius);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: -1;
         }
         
         header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--accent);
-            text-shadow: 0 0 10px rgba(74, 144, 226, 0.7);
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--light);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 25px;
+            color: #ecf0f1;
         }
         
         .designer-info {
-            background: rgba(67, 97, 238, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
+            background: rgba(52, 152, 219, 0.25);
+            padding: 15px 25px;
+            border-radius: var(--radius);
             display: inline-block;
             animation: pulse 2s infinite;
+            font-weight: 500;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow);
         }
         
+        /* محتوای اصلی */
         .main-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         
-        @media (max-width: 768px) {
+        @media (min-width: 992px) {
             .main-content {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
             }
         }
         
         .section {
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(26, 37, 47, 0.8);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
             transition: var(--transition);
-            animation: slideUp 0.8s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: rgba(52, 152, 219, 0.3);
         }
         
         .section h2 {
-            color: var(--accent);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary);
+            color: var(--secondary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(52, 152, 219, 0.3);
             font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         
         .section h3 {
             color: var(--success);
-            margin: 20px 0 15px;
+            margin: 25px 0 15px;
             font-size: 1.4rem;
         }
         
@@ -121,22 +219,24 @@
         }
         
         .btn {
-            padding: 12px 25px;
+            padding: 14px 28px;
             border: none;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
+            box-shadow: var(--shadow);
         }
         
         .btn-primary {
             background: var(--primary);
             color: white;
+            border: 2px solid var(--secondary);
         }
         
         .btn-secondary {
@@ -151,22 +251,22 @@
         
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
         }
         
         .btn-gradient {
-            background: linear-gradient(45deg, var(--primary), var(--accent));
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
             color: white;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
         
         .btn:active {
-            transform: translateY(1px);
+            transform: translateY(2px);
         }
         
         .btn-pulse:hover {
@@ -178,23 +278,25 @@
         }
         
         .menu {
-            background: rgba(67, 97, 238, 0.1);
-            border-radius: 10px;
-            padding: 15px;
+            background: rgba(52, 152, 219, 0.15);
+            border-radius: var(--radius);
+            padding: 20px;
             width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .nav-menu {
             display: flex;
+            flex-wrap: wrap;
             list-style: none;
-            background: rgba(33, 37, 41, 0.9);
+            background: rgba(44, 62, 80, 0.9);
             border-radius: 50px;
             padding: 10px;
             justify-content: center;
         }
         
         .nav-menu li {
-            margin: 0 10px;
+            margin: 5px;
         }
         
         .nav-menu a {
@@ -204,16 +306,20 @@
             border-radius: 30px;
             transition: var(--transition);
             display: block;
+            font-weight: 500;
         }
         
         .nav-menu a:hover {
-            background: var(--primary);
+            background: var(--secondary);
             transform: translateY(-3px);
+            box-shadow: var(--shadow);
         }
         
         .dropdown-menu {
             position: relative;
-            width: 200px;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
         }
         
         .dropdown-btn {
@@ -224,15 +330,17 @@
         .dropdown-content {
             position: absolute;
             top: 100%;
-            left: 0;
+            right: 0;
             width: 100%;
-            background: rgba(33, 37, 41, 0.95);
-            border-radius: 10px;
+            background: rgba(44, 62, 80, 0.95);
+            border-radius: var(--radius);
             padding: 10px 0;
             margin-top: 10px;
             display: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow);
             z-index: 100;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .dropdown-content a {
@@ -244,7 +352,7 @@
         }
         
         .dropdown-content a:hover {
-            background: var(--primary);
+            background: var(--secondary);
             padding-right: 25px;
         }
         
@@ -254,38 +362,54 @@
         }
         
         .explanation {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius);
             padding: 20px;
             margin: 20px 0;
+            border-left: 4px solid var(--secondary);
         }
         
         code {
             background: rgba(0, 0, 0, 0.3);
-            padding: 2px 6px;
+            padding: 3px 8px;
             border-radius: 4px;
             font-family: monospace;
             display: inline-block;
             margin: 5px 0;
+            font-size: 0.95rem;
         }
         
         footer {
             text-align: center;
-            padding: 30px 0;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            margin-top: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 1s ease;
+            padding: 40px 0;
+            background: rgba(26, 37, 47, 0.9);
+            border-radius: var(--radius) var(--radius) 0 0;
+            margin-top: 50px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(231, 76, 60, 0.1) 0%, transparent 70%);
+            z-index: -1;
         }
         
         footer .designer-info {
             animation: pulse 2s infinite;
+            margin-top: 20px;
+            font-size: 1.2rem;
         }
         
+        /* انیمیشن‌ها */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes slideUp {
@@ -300,9 +424,9 @@
         }
         
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.5); }
-            70% { box-shadow: 0 0 0 15px rgba(67, 97, 238, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(67, 97, 238, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(52, 152, 219, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
         }
         
         @keyframes shake {
@@ -323,25 +447,127 @@
         }
         
         .comment {
-            color: #6c757d;
+            color: #95a5a6;
             font-style: italic;
+        }
+        
+        /* استایل‌های ریسپانسیو */
+        @media (max-width: 991px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(26, 37, 47, 0.95);
+                width: 80%;
+                height: calc(100vh - 80px);
+                gap: 0;
+                transition: var(--transition);
+                padding: 20px 0;
+                backdrop-filter: blur(10px);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 18px;
+                border-radius: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-links a:hover {
+                background: rgba(52, 152, 219, 0.3);
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .designer-info {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .btn {
+                width: 100%;
+                padding: 16px;
+            }
+            
+            .button-container {
+                flex-direction: column;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                border-radius: var(--radius);
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 25px 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1><i class="fas fa-code"></i> طراحی دکمه‌ها و منوهای حرفه‌ای</h1>
-            <p>طراحی مدرن با رعایت اصول سئو و رابط کاربری</p>
+    <!-- نوار ناوبری همبرگری -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-code"></i>
+                طراحی شیرازی
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#" class="active"><i class="fas fa-home"></i> صفحه اصلی</a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i> درباره ما</a></li>
+                <li><a href="#"><i class="fas fa-briefcase"></i> خدمات</a></li>
+                <li><a href="#"><i class="fas fa-image"></i> نمونه کارها</a></li>
+                <li><a href="#"><i class="fas fa-phone"></i> تماس با ما</a></li>
+            </ul>
+            
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- هدر صفحه -->
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-mouse-pointer"></i> طراحی دکمه‌ها و منوهای حرفه‌ای</h1>
+            <p>طراحی مدرن و ریسپانسیو با منوی همبرگری و رعایت اصول سئو و رابط کاربری</p>
             <div class="designer-info">
                 طراح: شیرازی | پیامک: 09931701885
             </div>
-        </header>
-        
+        </div>
+    </header>
+    
+    <!-- محتوای اصلی -->
+    <div class="container">
         <div class="main-content">
             <div class="section">
                 <div class="buttons-section">
-                    <h2><i class="fas fa-mouse-pointer"></i> دکمه‌های مدرن</h2>
+                    <h2><i class="fas fa-square"></i> دکمه‌های مدرن</h2>
                     
                     <div class="button-container">
                         <button class="btn btn-primary"><i class="fas fa-rocket"></i> دکمه اصلی</button>
@@ -353,31 +579,15 @@
                     </div>
                     
                     <div class="explanation">
-                        <h3>توضیحات فنی دکمه‌ها</h3>
-                        <p>دکمه‌های فوق با استفاده از تگ <code class="html-tag">&lt;button&gt;</code> ایجاد شده‌اند. هر دکمه دارای کلاس‌های مختلفی است که ظاهر و رفتار آن را تعیین می‌کند.</p>
-                        
-                        <p><strong>کلاس‌های اصلی:</strong></p>
+                        <h3>ویژگی‌های دکمه‌ها</h3>
+                        <p>دکمه‌های طراحی شده دارای ویژگی‌های زیر هستند:</p>
                         <ul>
-                            <li><code>.btn</code>: استایل پایه برای تمام دکمه‌ها</li>
-                            <li><code>.btn-primary</code>: دکمه اصلی با رنگ آبی</li>
-                            <li><code>.btn-secondary</code>: دکمه ثانویه با رنگ بنفش</li>
-                            <li><code>.btn-accent</code>: دکمه تاکیدی با رنگ روشن</li>
-                            <li><code>.btn-outline</code>: دکمه با حاشیه و زمینه شفاف</li>
-                            <li><code>.btn-gradient</code>: دکمه با پس‌زمینه گرادیانتی</li>
-                        </ul>
-                        
-                        <p><strong>انیمیشن‌ها:</strong></p>
-                        <ul>
-                            <li>هنگام hover دکمه‌ها به سمت بالا حرکت می‌کنند و سایه ایجاد می‌شود</li>
-                            <li><code>.btn-pulse</code>: ایجاد انیمیشن ضربان هنگام hover</li>
-                            <li><code>.btn-shake</code>: ایجاد انیمیشن لرزش هنگام hover</li>
-                        </ul>
-                        
-                        <p><strong>رعایت اصول سئو:</strong></p>
-                        <ul>
-                            <li>استفاده از تگ معنایی <code class="html-tag">&lt;button&gt;</code> به جای div برای دکمه‌ها</li>
-                            <li>اضافه کردن آیکون‌های معنادار با <code class="html-tag">&lt;i&gt;</code> از Font Awesome</li>
-                            <li>استفاده از متن توصیفی در دکمه‌ها</li>
+                            <li>طراحی ریسپانسیو و واکنشگرا برای همه دستگاه‌ها</li>
+                            <li>افکت‌های hover و active با انیمیشن‌های نرم</li>
+                            <li>سایه‌های ملایم برای ایجاد عمق</li>
+                            <li>استفاده از آیکون‌های معنادار برای درک بهتر</li>
+                            <li>حاشیه‌های گرد برای ظاهر مدرن</li>
+                            <li>انیمیشن‌های پالس و لرزش برای تعامل بهتر</li>
                         </ul>
                     </div>
                 </div>
@@ -389,54 +599,37 @@
                         <div class="menu">
                             <h3>منوی ناوبری افقی</h3>
                             <ul class="nav-menu">
-                                <li><a href="#"><i class="fas fa-home"></i> صفحه اصلی</a></li>
-                                <li><a href="#"><i class="fas fa-info-circle"></i> درباره ما</a></li>
-                                <li><a href="#"><i class="fas fa-briefcase"></i> خدمات</a></li>
-                                <li><a href="#"><i class="fas fa-image"></i> نمونه کارها</a></li>
-                                <li><a href="#"><i class="fas fa-phone"></i> تماس با ما</a></li>
+                                <li><a href="#"><i class="fas fa-home"></i> خانه</a></li>
+                                <li><a href="#"><i class="fas fa-user"></i> پروفایل</a></li>
+                                <li><a href="#"><i class="fas fa-cog"></i> تنظیمات</a></li>
+                                <li><a href="#"><i class="fas fa-envelope"></i> پیام‌ها</a></li>
                             </ul>
                         </div>
                         
                         <div class="menu">
                             <h3>منوی آبشاری (Dropdown)</h3>
                             <div class="dropdown-menu">
-                                <button class="btn btn-primary dropdown-btn"><i class="fas fa-list"></i> منوی محصولات</button>
+                                <button class="btn btn-secondary dropdown-btn"><i class="fas fa-list"></i> دسته‌بندی محصولات</button>
                                 <div class="dropdown-content">
                                     <a href="#"><i class="fas fa-laptop"></i> لپ‌تاپ و کامپیوتر</a>
                                     <a href="#"><i class="fas fa-mobile-alt"></i> گوشی موبایل</a>
                                     <a href="#"><i class="fas fa-tablet-alt"></i> تبلت</a>
                                     <a href="#"><i class="fas fa-headphones"></i> لوازم جانبی</a>
-                                    <a href="#"><i class="fas fa-camera"></i> دوربین</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="explanation">
-                        <h3>توضیحات فنی منوها</h3>
-                        <p>منوها با استفاده از تگ‌های معنایی <code class="html-tag">&lt;nav&gt;</code>، <code class="html-tag">&lt;ul&gt;</code> و <code class="html-tag">&lt;li&gt;</code> ایجاد شده‌اند که برای سئو بسیار مناسب است.</p>
-                        
-                        <p><strong>منوی افقی:</strong></p>
+                        <h3>منوی همبرگری ریسپانسیو</h3>
+                        <p>منوی همبرگری طراحی شده دارای ویژگی‌های زیر است:</p>
                         <ul>
-                            <li>با استفاده از Flexbox طراحی شده است</li>
-                            <li>دارای افکت hover با تغییر رنگ زمینه و حرکت به بالا</li>
-                            <li>حاشیه‌های گرد و ظاهر مدرن</li>
-                        </ul>
-                        
-                        <p><strong>منوی آبشاری:</strong></p>
-                        <ul>
-                            <li>با ترکیب position: relative و absolute ایجاد شده</li>
-                            <li>منوی آبشاری هنگام hover روی دکمه اصلی نمایش داده می‌شود</li>
-                            <li>دارای انیمیشن fadeIn هنگام نمایش</li>
-                            <li>آیتم‌های منو هنگام hover دارای پدینگ بیشتر می‌شوند</li>
-                        </ul>
-                        
-                        <p><strong>رعایت اصول سئو در منوها:</strong></p>
-                        <ul>
-                            <li>استفاده از ساختار لیست (ul/li) برای منوها</li>
-                            <li>استفاده از تگ nav برای بخش ناوبری اصلی</li>
-                            <li>استفاده از لینک‌های معنادار با متن توصیفی</li>
-                            <li>اضافه کردن آیکون‌های مرتبط برای هر آیتم منو</li>
+                            <li>تغییر به منوی همبرگری در دستگاه‌های موبایل</li>
+                            <li>انیمیشن باز و بسته شدن روان</li>
+                            <li>طراحی مدرن با افکت شیشه‌ای (glass morphism)</li>
+                            <li>سایه‌های ملایم برای جداسازی از پس‌زمینه</li>
+                            <li>رنگ‌بندی حرفه‌ای با کنتراست مناسب</li>
+                            <li>بهینه‌سازی شده برای لمس در موبایل</li>
                         </ul>
                     </div>
                 </div>
@@ -446,58 +639,69 @@
                 <h2><i class="fas fa-lightbulb"></i> نکات طراحی و سئو</h2>
                 
                 <div class="explanation">
-                    <h3>بهینه‌سازی سئو</h3>
+                    <h3>بهینه‌سازی برای موبایل</h3>
                     <ul>
-                        <li>استفاده از تگ‌های معنایی HTML5 مانند <code class="html-tag">&lt;header&gt;</code>, <code class="html-tag">&lt;main&gt;</code>, <code class="html-tag">&lt;footer&gt;</code>, <code class="html-tag">&lt;nav&gt;</code></li>
-                        <li>استفاده از meta tags توصیفی شامل description و keywords</li>
-                        <li>تعیین زبان صفحه با <code>lang="fa"</code> و جهت متن با <code>dir="rtl"</code></li>
-                        <li>استفاده از تگ‌های heading به ترتیب اهمیت (h1 تا h6)</li>
-                        <li>استفاده از متن جایگزین (alt) برای تصاویر (در این صفحه تصویری وجود ندارد)</li>
-                        <li>طراحی ریسپانسیو برای نمایش در دستگاه‌های مختلف</li>
+                        <li>استفاده از رویکرد Mobile-First در طراحی</li>
+                        <li>منوی همبرگری با عملکرد روان برای دستگاه‌های کوچک</li>
+                        <li>دکمه‌های بزرگتر برای لمس آسان در موبایل</li>
+                        <li>فونت‌های خوانا و اندازه مناسب برای موبایل</li>
+                        <li>فاصله‌گذاری مناسب بین عناصر</li>
+                        <li>بهینه‌سازی سرعت بارگذاری</li>
                     </ul>
                     
-                    <h3>اصول طراحی رابط کاربری</h3>
+                    <h3>ترکیب رنگ حرفه‌ای</h3>
+                    <p>ترکیب رنگ استفاده شده در این طراحی:</p>
                     <ul>
-                        <li>استفاده از رنگ‌های هماهنگ و کنتراست مناسب</li>
-                        <li>افکت‌های hover برای تعامل بهتر کاربر</li>
-                        <li>انیمیشن‌های سبک و غیرمزاحم برای تجربه کاربری بهتر</li>
-                        <li>فضای خالی مناسب برای خوانایی بهتر</li>
-                        <li>حاشیه‌های گرد برای ظاهر مدرن</li>
-                        <li>سایه‌های ملایم برای ایجاد عمق</li>
-                        <li>استفاده از آیکون‌های Font Awesome برای درک بصری بهتر</li>
+                        <li>رنگ اصلی: آبی تیره (#2c3e50) - حرفه‌ای و رسمی</li>
+                        <li>رنگ ثانویه: آبی آسمانی (#3498db) - نشاط و اعتماد</li>
+                        <li>رنگ تاکیدی: قرمز (#e74c3c) - جلب توجه به المان‌های مهم</li>
+                        <li>پس‌زمینه: گرادیانت آبی تیره - عمق و بعد</li>
+                        <li>متن: سفید و خاکستری روشن - خوانایی عالی</li>
                     </ul>
                     
-                    <h3>تگ‌های مهم استفاده شده</h3>
+                    <h3>رعایت اصول سئو</h3>
                     <ul>
-                        <li><code class="html-tag">&lt;button&gt;</code>: برای ایجاد دکمه‌های قابل کلیک</li>
-                        <li><code class="html-tag">&lt;a&gt;</code>: برای لینک‌ها در منوها</li>
-                        <li><code class="html-tag">&lt;ul&gt;</code> و <code class="html-tag">&lt;li&gt;</code>: برای ساختار لیست‌های منو</li>
-                        <li><code class="html-tag">&lt;div&gt;</code>: برای گروه‌بندی عناصر</li>
-                        <li><code class="html-tag">&lt;i&gt;</code>: برای نمایش آیکون‌ها</li>
-                        <li><code class="html-tag">&lt;code&gt;</code>: برای نمایش کدهای نمونه</li>
-                    </ul>
-                    
-                    <h3>تکنیک‌های CSS پیشرفته</h3>
-                    <ul>
-                        <li>متغیرهای CSS (Custom Properties) برای مدیریت رنگ‌ها</li>
-                        <li>Flexbox و Grid برای چیدمان‌های مدرن</li>
-                        <li>گرادیانت برای پس‌زمینه‌ها و دکمه‌ها</li>
-                        <li>انیمیشن‌های CSS برای افکت‌های hover</li>
-                        <li>مدیا کوئری‌ها برای طراحی ریسپانسیو</li>
-                        <li>سایه‌های متن و باکس برای ایجاد عمق</li>
-                        <li>ترنزیشن‌ها برای تغییرات نرم</li>
+                        <li>استفاده از تگ‌های معنایی HTML5</li>
+                        <li>ساختار heading صحیح (H1 تا H3)</li>
+                        <li>تعیین زبان صفحه با <code>lang="fa"</code></li>
+                        <li>متا تگ‌های توصیفی مناسب</li>
+                        <li>متن جایگزین برای آیکون‌ها</li>
+                        <li>سرعت بارگذاری بهینه شده</li>
                     </ul>
                 </div>
             </div>
         </div>
-        
-        <footer>
-            <h3>پروژه طراحی رابط کاربری مدرن</h3>
-            <p>این صفحه نمونه‌ای از طراحی دکمه‌ها و منوهای حرفه‌ای با رعایت اصول سئو و تجربه کاربری است</p>
+    </div>
+    
+    <!-- پاورقی -->
+    <footer>
+        <div class="container">
+            <h3>طراحی رابط کاربری مدرن و ریسپانسیو</h3>
+            <p>این صفحه نمونه‌ای از طراحی حرفه‌ای با رعایت اصول UI/UX و سئو برای دستگاه‌های مختلف است</p>
             <div class="designer-info">
                 طراح: شیرازی | پیامک: 09931701885
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
+    
+    <script>
+        // اسکریپت منوی همبرگری
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // بستن منو هنگام کلیک روی لینک‌ها
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+    </script>
 </body>
 </html>
